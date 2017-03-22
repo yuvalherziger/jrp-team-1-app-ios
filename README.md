@@ -4,17 +4,17 @@ This tutorial will describe how you can run and test the app on your on computer
 
 Table of Contents:
 
-* **1** Prerequisites
-  * **1.1** Installing Xcode
-  * **1.2** Installing homebrew 
-  * **1.3** Installing npm 
-  * **1.4** Installing Apache Cordova
-  * **1.5** Installing git
-* **2** Cloning the app code 
-* **3** Emulating the app on iOS 
-* **4** Emulating the app on Android 
+* **(1)** Prerequisites
+  * **(1.1)** Installing Xcode
+  * **(1.2)** Installing homebrew 
+  * **(1.3)** Installing npm 
+  * **(1.4)** Installing Apache Cordova
+  * **(1.5)** Installing git
+* **(2)** Cloning the app code 
+* **(3)** Emulating the app on iOS 
+* **(4)** Emulating the app on Android 
 
-## 1 Prerequisites
+## (1) Prerequisites
 
 In order to emulate the app, you will need to install all of the following on your Mac:
 
@@ -24,11 +24,11 @@ In order to emulate the app, you will need to install all of the following on yo
 4. **Apache Cordova** - a platform with a command line tool for building HTML/JS/CSS apps for mobile devices
 5. **git** - a source control system that allows you to collaborate on this project
 
-    ### 1.1 Installing Xcode
+    ### (1.1) Installing Xcode
     
     As simple as it gets, just go to Apple's app store and install Xcode ([use this link][app-store-xcode]).
 
-    ### 1.2 Installing homebrew
+    ### (1.2) Installing homebrew
     
     Open your terminal (CMD + T and type `terminal`).
     
@@ -51,7 +51,7 @@ In order to emulate the app, you will need to install all of the following on yo
     
     Hit enter and follow the instructions.
 
-    ### 1.3 Installing npm 
+    ### (1.3) Installing npm 
     
     Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER. 
     ```bash
@@ -59,13 +59,14 @@ In order to emulate the app, you will need to install all of the following on yo
     ```
     
     Then run the following command and press ENTER.
+    
     _You might be prompted to insert your password (it's the same password you use to log into your Mac)._
     
     ```bash
     brew install node
     ```
 
-    ### 1.4 Installing Apache Cordova
+    ### (1.4) Installing Apache Cordova
     
     Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
     
@@ -75,7 +76,7 @@ In order to emulate the app, you will need to install all of the following on yo
     sudo npm install -g cordova
     ```
 
-    ### 1.5 Installing git
+    ### (1.5) Installing git
     
     Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
     
@@ -83,7 +84,7 @@ In order to emulate the app, you will need to install all of the following on yo
     brew install git
     ```
 
-## 2 Cloning the app code 
+## (2) Cloning the app code 
 
 Now that you have installed all of the required package managers and the required software, you can clone the app.
  
@@ -112,7 +113,7 @@ After the numbers finish crunching, you will have a new folder named _**jrp-team
 cd jrp-team-1-app
 ```
 
-## 3 Emulating the app on iOS
+## (3) Emulating the app on iOS
 
 Now for the fun part :tada:
 
@@ -128,7 +129,7 @@ This command just built an ios app that's ready to be emulated. Lastly, let's ru
 cordova emulate ios
 ```
 
-## 4 Emulating the app on Android
+## (4) Emulating the app on Android
 
 Since emulating an Android device...
 
