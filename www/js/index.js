@@ -109,8 +109,16 @@ var render = function() {
     }
 };
 
+var initLinkClickEvents = function() {
+    $$(".dayLink").click(function() {
+        window.open($$(this).attr('data-link'), '_system');
+        console.log()
+    });
+};
+
 var initProgress = function() {
     getStudyUrls();
+    initLinkClickEvents();
     var initialParticipantProgress = {
         linksClicked: [
             {day: 1, clicked: false, dateClicked: null, dateConfirmed: null},
@@ -268,7 +276,8 @@ var appendStudyUrls = function(studyUrls) {
 };
 
 var getStudyUrls = function() {
-
+    $$("#loading").attr('style', 'display: block');
+    $$("#content").hide();
     var url = "https://s3-eu-west-1.amazonaws.com/jrp-team-1-consumption/study-paths";
     var data = {};
     $$.getJSON(
@@ -282,5 +291,6 @@ var getStudyUrls = function() {
             console.log('got error', xhr, status);
             appendStudyUrls(studyUrls);
         });
+    $$("#loading").hide();
+    $$("#content").attr('style', 'display: block');
 };
-

@@ -43,6 +43,10 @@
         </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
         <div class="pages navbar-through toolbar-through">
+            <div id="loading" class="page">
+                <div class="content-block-title">Loading your study links...</div>
+                <img src="res/img/loading.gif" />
+            </div>
             <!-- Page, data-page contains page name-->
             <div data-page="index" class="page" id="content">
                 <!-- Scrollable page content-->
@@ -67,25 +71,25 @@
                     <div class="content-block-title">Questionnaires</div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day1" data-link="https://www.google.com" onclick="linkClicked(1);window.open('https://www.google.com', '_system');" class="button dayLink">Day 1</a></div>
-                            <div class="col-50"><a href="#" id="day2" data-link="https://www.google.com" onclick="linkClicked(2);window.open('https://www.google.com', '_system');" class="button dayLink">Day 2</a></div>
+                            <div class="col-50"><a href="#" id="day1" data-link="https://www.google.com" onclick="linkClicked(1);" class="button dayLink">Day 1</a></div>
+                            <div class="col-50"><a href="#" id="day2" data-link="https://www.google.com" onclick="linkClicked(2);" class="button dayLink">Day 2</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day3" data-link="https://www.google.com" onclick="linkClicked(3);window.open('https://www.google.com', '_system');" class="button dayLink">Day 3</a></div>
-                            <div class="col-50"><a href="#" id="day4" data-link="https://www.google.com" onclick="linkClicked(4);window.open('https://www.google.com', '_system');" class="button dayLink">Day 4</a></div>
+                            <div class="col-50"><a href="#" id="day3" data-link="https://www.google.com" onclick="linkClicked(3);" class="button dayLink">Day 3</a></div>
+                            <div class="col-50"><a href="#" id="day4" data-link="https://www.google.com" onclick="linkClicked(4);" class="button dayLink">Day 4</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day5" data-link="https://www.google.com" onclick="linkClicked(5);window.open('https://www.google.com', '_system');" class="button dayLink">Day 5</a></div>
+                            <div class="col-50"><a href="#" id="day5" data-link="https://www.google.com" onclick="linkClicked(5);" class="button dayLink">Day 5</a></div>
                             <div class="col-50"><a href="#" id="day6" data-link="https://www.google.com" onclick="linkClicked(6);window.open('https://www.google.com', '_system');" class="button dayLink">Day 6</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day7" data-link="https://www.google.com" onclick="linkClicked(7);window.open('https://www.google.com', '_system');" class="button dayLink">Day 7</a></div>
+                            <div class="col-50"><a href="#" id="day7" data-link="https://www.google.com" onclick="linkClicked(7);" class="button dayLink">Day 7</a></div>
                         </div>
                     </div>
                     <div class="content-block-title userMistake" style="display: none">Didn't complete day <span class="userMistakeLastStudy"></span>?</div>
