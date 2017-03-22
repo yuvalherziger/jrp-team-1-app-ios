@@ -14,7 +14,22 @@ In order to emulate the app, you will need to install all of the following on yo
 
 ### 1.1. Install Xcode
 
-As simple as it gets, just go to Apple's app store and install Xcode ([use this link][app-store-xcode]).
+Keep in mind that Xcode takes ~5GB of your hard drive's space.
+Go to Apple's app store and install Xcode ([use this link][app-store-xcode]).
+ 
+
+After the installation is completed, **open the Xcode** app to simply accept the license agreement.
+
+After accepting the license agreement, there's only one step you need to take:
+
+1. Open your terminal (CMD + T and type `terminal`)
+2. Paste the following command and hit ENTER:
+
+```bash
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+```
+
+Type in your password when prompted to, and that's it.
 
 ### 1.2. Install homebrew
 
