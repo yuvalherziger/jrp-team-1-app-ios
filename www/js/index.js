@@ -3,9 +3,9 @@ Number.prototype.padLeft = function(base, chr) {
     return len > 0? new Array(len).join(chr || '0')+this : this;
 };
 
-/*window.addEventListener("storage", function () {
-    initProgress();
-}, false);*/
+window.addEventListener("storage", function () {
+    render();
+}, false);
 
 document.addEventListener('deviceready', function () {
     var permissionGranted = false;
@@ -25,7 +25,11 @@ document.addEventListener('deviceready', function () {
         }
     });
 
-    initProgress();
+    try {
+        initProgress();
+    } catch(e) {
+        alert(e.toString());
+    }
 
 }, false);
 
@@ -143,11 +147,9 @@ var initProgress = function() {
             scheduleNotification(notificationTime, day);
 
         }
-        render();
-    } else {
-        // progress tracking exists, parse it:
-        render();
     }
+
+
 
     for (var i = 1; i <= 7; i++) {
         if (localStorage.getItem("linkClickProgressDay" + i) === null) {
@@ -163,6 +165,8 @@ var initProgress = function() {
             $$("#day" + i).html(html);
         }
     }
+
+    render();
 };
 var calculateNextNotificationTime = function() {
     var time = new Date();
@@ -252,6 +256,7 @@ var studyCompletionConfirmed = function(day) {
         render();
     } catch (e) {
         console.debug(e.toString());
+        render();
     }
 };
 
@@ -272,6 +277,7 @@ var appendStudyUrls = function(studyUrls) {
             $$("#" + property).attr("data-link", studyUrls[property]);
         }
     }
+
 };
 
 var getStudyUrls = function() {
@@ -292,4 +298,5 @@ var getStudyUrls = function() {
         });
     $$("#loading").hide();
     $$("#content").attr('style', 'display: block');
+    render();
 };
