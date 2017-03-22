@@ -80,10 +80,11 @@ var render = function() {
                 window.open(url, '_system');
             });
         }
-
-        $$("#nextStudyMessageDay").each(function() {
-            $$(this).html(lastStudy);
-        });
+        if (lastStudy < 8) {
+            $$("#nextStudyMessage").html('Your next task is day <strong>' + lastStudy + '</strong> questionnaire.');
+        } else {
+            $$("#nextStudyMessage").html('Thank you for completing the study!');
+        }
     } else {
         $$("#initialMessage").attr('style', 'display: block');
         $$("#nextStudyQuestionMessage").hide();
