@@ -59,14 +59,16 @@ var render = function() {
             $$("#nextStudyQuestionMessage").hide();
             $$("#nextStudyMessage").attr('style', 'display: block');
             $$(".userMistake").attr('style', 'display: block');
-            $$(".userMistakeLastStudy").html(lastStudy);
+            var html = lastStudy === 1 ? 'the Intake' : 'day ' + (lastStudy - 1);
+            $$(".userMistakeLastStudy").html(html);
         } else {
             $$(".userMistake").hide();
             $$("#initialMessage").hide();
             $$("#nextStudyQuestionMessage").attr('style', 'display: block');
             $$("#nextStudyMessage").hide();
             $$(".lastStudyMessageDay").each(function() {
-               $$(this).html(lastStudy);
+                html = lastStudy === 1 ? 'the Intake' : 'day ' + (lastStudy - 1);
+                $$(this).html(html);
             });
             var lastLinkClicked = getLastLinkClick();
             lastLinkClicked = formatDate(new Date(lastLinkClicked));
@@ -78,8 +80,9 @@ var render = function() {
                 window.open(url, '_system');
             });
         }
-        $$(".nextStudyMessageDay").each(function() {
-            $$(this).html(lastStudy + 1);
+
+        $$("#nextStudyMessageDay").each(function() {
+            $$(this).html(lastStudy);
         });
     } else {
         $$("#initialMessage").attr('style', 'display: block');
@@ -94,14 +97,18 @@ var render = function() {
         var clicked = participantProgress.linksClicked[i].clicked;
         var confirmed = participantProgress.linksClicked[i].dateConfirmed !== null;
         var day = participantProgress.linksClicked[i].day;
-        var html = 'Day ' + day;
+
+        console.log('day', day);
+        console.log('day - 1', day - 1);
+
+        html = (day === 1 ? 'Intake' : 'Day ' + (day - 1));
         if (clicked === true && confirmed) {
             lastClicked = participantProgress.linksClicked[i].day;
-            html += ' <img src="img/notification_done.png" style="height: 15px; vertical-align:text-top"/>';
+            html = '<img src="img/white-check.png" style="height: 10px;"/> ' + html;
         }
         $$("#day" + day).html(html);
     }
-    for (var j = 1; j <= 7; j++) {
+    for (var j = 1; j <= 8; j++) {
         if (j !== lastClicked + 1) {
             $$("#day" + j).attr('disabled', true);
         }
@@ -126,7 +133,8 @@ var initProgress = function() {
             {day: 4, clicked: false, dateClicked: null, dateConfirmed: null },
             {day: 5, clicked: false, dateClicked: null, dateConfirmed: null },
             {day: 6, clicked: false, dateClicked: null, dateConfirmed: null },
-            {day: 7, clicked: false, dateClicked: null, dateConfirmed: null }
+            {day: 7, clicked: false, dateClicked: null, dateConfirmed: null },
+            {day: 8, clicked: false, dateClicked: null, dateConfirmed: null }
         ],
         lastStudy: 0,
         confirmedState: false
@@ -147,7 +155,7 @@ var initProgress = function() {
 
 
 
-    for (var i = 1; i <= 7; i++) {
+    for (var i = 1; i <= 8; i++) {
         if (localStorage.getItem("linkClickProgressDay" + i) === null) {
             // first time the app is opened:
             localStorage.setItem("linkClickProgressDay" + i, false);
@@ -234,7 +242,7 @@ var studyCompletionConfirmed = function(day) {
         cordova.plugins.notification.local.cancel(day);
 
         var notificationTime = calculateNextNotificationTime();
-        if (day < 7) {
+        if (day < 8) {
             var nextDay = day + 1;
             scheduleNotification(notificationTime, nextDay);
         } else {
@@ -258,13 +266,14 @@ var studyCompletionConfirmed = function(day) {
 
 // default values for study links:
 var studyUrls = {
-    day1: "https://www.google.com/?day1",
-    day2: "https://www.google.com/?day2",
-    day3: "https://www.google.com/?day3",
-    day4: "https://www.google.com/?day4",
-    day5: "https://www.google.com/?day5",
-    day6: "https://www.google.com/?day6",
-    day7: "https://www.google.com/?day7"
+    day1: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_cAMr40YJFIe3hxX",
+    day2: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day3: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day4: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day5: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day6: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day7: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b",
+    day8: "https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b"
 };
 
 var appendStudyUrls = function(studyUrls) {
