@@ -3,10 +3,6 @@ Number.prototype.padLeft = function(base, chr) {
     return len > 0? new Array(len).join(chr || '0')+this : this;
 };
 
-window.addEventListener("storage", function () {
-    render();
-}, false);
-
 document.addEventListener('deviceready', function () {
     var permissionGranted = false;
 
@@ -298,5 +294,4 @@ var getStudyUrls = function() {
         });
     $$("#loading").hide();
     $$("#content").attr('style', 'display: block');
-    render();
 };
