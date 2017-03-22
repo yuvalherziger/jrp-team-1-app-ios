@@ -2,7 +2,19 @@
 
 This tutorial will describe how you can run and test the app on your on computer (Mac only, sorry :smiley:) 
 
-## 1. Prerequisites
+Table of Contents:
+
+* **(1)** Prerequisites
+  * **(1.1)** Installing Xcode
+  * **(1.2)** Installing homebrew 
+  * **(1.3)** Installing npm 
+  * **(1.4)** Installing Apache Cordova
+  * **(1.5)** Installing git
+* **(2)** Cloning the app code 
+* **(3)** Emulating the app on iOS 
+* **(4)** Emulating the app on Android 
+
+## (1) Prerequisites
 
 In order to emulate the app, you will need to install all of the following on your Mac:
 
@@ -12,59 +24,67 @@ In order to emulate the app, you will need to install all of the following on yo
 4. **Apache Cordova** - a platform with a command line tool for building HTML/JS/CSS apps for mobile devices
 5. **git** - a source control system that allows you to collaborate on this project
 
-### 1.1. Install Xcode
+    ### (1.1) Installing Xcode
+    
+    As simple as it gets, just go to Apple's app store and install Xcode ([use this link][app-store-xcode]).
 
-As simple as it gets, just go to Apple's app store and install Xcode ([use this link][app-store-xcode]).
+    ### (1.2) Installing homebrew
+    
+    Open your terminal (CMD + T and type `terminal`).
+    
+    First let's check if you already have _homebrew_ installed on your Mac:
+    
+    Within the terminal, paste the following command:
+    ```bash
+    brew ls -l
+    ```
+    
+    If the output is something along the lines of **`command not found: brew`**, then you should carry on as mentioned below.
+    
+    Within the terminal, paste the following command and follow the instructions. 
+    
+    _You might be prompted to insert your password (it's the same password you use to log into your Mac)._
+    
+    ```bash
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+    
+    Hit enter and follow the instructions.
 
-### 1.2. Install homebrew
+    ### (1.3) Installing npm 
+    
+    Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER. 
+    ```bash
+    brew update
+    ```
+    
+    Then run the following command and press ENTER.
+    
+    _You might be prompted to insert your password (it's the same password you use to log into your Mac)._
+    
+    ```bash
+    brew install node
+    ```
 
-Open your terminal (CMD + T and type `terminal`).
+    ### (1.4) Installing Apache Cordova
+    
+    Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
+    
+    _You will be prompted to insert your password (it's the same password you use to log into your Mac)._
+    
+    ```bash
+    sudo npm install -g cordova
+    ```
 
-Within the terminal, paste the following command and follow the instructions. 
+    ### (1.5) Installing git
+    
+    Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
+    
+    ```bash
+    brew install git
+    ```
 
-_You might be prompted to insert your password (it's the same password you use to log into your Mac)._
-
-```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-Hit enter and follow the instructions.
-
-### 1.3. Install npm 
-
-Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER. 
-```bash
-brew update
-```
-
-Then run the following command and press ENTER.
-_You might be prompted to insert your password (it's the same password you use to log into your Mac)._
-
-```bash
-brew install node
-```
-
-### 1.4. Install Apache Cordova
-
-Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
-
-_You will be prompted to insert your password (it's the same password you use to log into your Mac)._
-
-```bash
-sudo npm install -g cordova
-```
-
-### 1.5. Install git
-
-Open your terminal (CMD + T and type `terminal` + ENTER), then just type the following command and press ENTER:
-
-```bash
-brew install git
-```
-
-[app-store-xcode]: https://itunes.apple.com/us/app/xcode/id497799835?mt=12
-
-## 2. Clone the app code 
+## (2) Cloning the app code 
 
 Now that you have installed all of the required package managers and the required software, you can clone the app.
  
@@ -93,7 +113,7 @@ After the numbers finish crunching, you will have a new folder named _**jrp-team
 cd jrp-team-1-app
 ```
 
-## 3. Emulation
+## (3) Emulating the app on iOS
 
 Now for the fun part :tada:
 
@@ -109,3 +129,41 @@ This command just built an ios app that's ready to be emulated. Lastly, let's ru
 cordova emulate ios
 ```
 
+## (4) Emulating the app on Android
+
+Since emulating an Android device...
+
+1. requires a long setup that includes the installation Android Studio and installation of an AVD (**A**ndroid **V**irtual **D**evice);
+2. tends to be slow; 
+
+...I would strongly advise you to enable USB debugging on an Android device (provided that you posses one) and test the app on it. 
+Under [this link][usb-debuggin-android] you can discover how to enable USB debugging on your Android device.
+
+After enabling USB debugging on your Android device and connecting it to your computer with a USB cable, you can simply run the following command to build the app:
+
+```bash
+cordova build android
+```
+
+Afterwards you should be able to run the app on your device by running the following command:
+```bash
+cordova run android
+```
+
+Cordova should automatically detect your connected device and target the app to it.
+
+ 
+It just might be that you don't have an Android device, and in this case you can visit [this link][android-emulator-mac] to find out how to create an Android Emulator.
+
+
+Do mind the fact that you've already have `git` and `homebrew` installed on your Mac from the previous steps of this guide.
+
+If you have gone down the path of installing an Android emulator, the command to emulate it is the following one:
+
+```bash
+cordova emulate android
+```
+
+[usb-debuggin-android]: https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm
+[app-store-xcode]: https://itunes.apple.com/us/app/xcode/id497799835?mt=12
+[android-emulator-mac]: :https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
