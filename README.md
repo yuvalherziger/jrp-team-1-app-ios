@@ -1,6 +1,6 @@
 # JRP Team 1 (Consumption) Study App
 
-This tutorial will describe how you can run and test the app on your on computer (Mac only, sorry :smiley:) 
+This tutorial will describe how you can run and test the app on your own computer (Mac only, sorry :smiley:) 
 
 ## Table of Contents:
 
@@ -148,7 +148,7 @@ cordova emulate ios
 
 Since emulating an Android device...
 
-1. requires a long setup that entails on the installation of Android Studio and the installation of an AVD (**A**ndroid **V**irtual **D**evice);
+1. requires a long setup that entails the installation of Android Studio and an AVD (**A**ndroid **V**irtual **D**evice);
 2. tends to be slow; 
 
 ...I would strongly advise you to enable USB debugging on an Android device (provided that you posses one) and test the app on it. 
@@ -172,7 +172,7 @@ Cordova should automatically detect your connected device and target the app to 
 It just might be that you don't have an Android device, and in this case you can visit [this link][android-emulator-mac] to find out how to create an Android Emulator.
 
 
-Do mind the fact that you've already have `git` and `homebrew` installed on your Mac from the previous steps of this guide.
+Do mind the fact that you already have `git` and `homebrew` installed on your Mac from the previous steps of this guide.
 
 If you have gone down the path of installing an Android emulator, the command to emulate it is the following one:
 
