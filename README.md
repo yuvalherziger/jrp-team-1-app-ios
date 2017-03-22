@@ -133,7 +133,7 @@ cordova emulate ios
 
 Since emulating an Android device...
 
-1. requires a long setup that includes the installation of Android Studio and installation of an AVD (**A**ndroid **V**irtual **D**evice);
+1. requires a long setup that entails on the installation of Android Studio and the installation of an AVD (**A**ndroid **V**irtual **D**evice);
 2. tends to be slow; 
 
 ...I would strongly advise you to enable USB debugging on an Android device (provided that you posses one) and test the app on it. 
