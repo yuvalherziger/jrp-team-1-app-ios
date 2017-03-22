@@ -34,8 +34,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="865">
-              <caret line="296" column="0" lean-forward="true" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+            <state relative-caret-position="850">
+              <caret line="295" column="2" lean-forward="true" selection-start-line="295" selection-start-column="2" selection-end-line="295" selection-end-column="2" />
               <folding>
                 <marker date="1490169927000" expanded="true" signature="3712:3749" ph="..." />
                 <marker date="1490169927000" expanded="true" signature="6070:6107" ph="..." />
@@ -299,12 +299,12 @@
       <updated>1489921445817</updated>
       <workItem from="1489921447168" duration="17091000" />
       <workItem from="1490032610935" duration="8884000" />
-      <workItem from="1490116722101" duration="5602000" />
+      <workItem from="1490116722101" duration="6871000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31577000" />
+    <option name="totallyTimeSpent" value="32846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1367" extended-state="6" />
@@ -562,8 +562,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="296" column="0" lean-forward="true" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+        <state relative-caret-position="850">
+          <caret line="295" column="2" lean-forward="true" selection-start-line="295" selection-start-column="2" selection-end-line="295" selection-end-column="2" />
           <folding>
             <marker date="1490169927000" expanded="true" signature="3712:3749" ph="..." />
             <marker date="1490169927000" expanded="true" signature="6070:6107" ph="..." />
