@@ -2,7 +2,7 @@
 
 This tutorial will describe how you can run and test the app on your on computer (Mac only, sorry :smiley:) 
 
-Table of Contents:
+## Table of Contents:
 
 * **(1)** Prerequisites
   * **(1.1)** Installing Xcode
