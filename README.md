@@ -120,6 +120,7 @@ Now for the fun part :tada:
 While in the _**jrp-team-1-app**_ working directory, type the following command:
 
 ```bash
+cordova platforms add ios
 cordova build ios
 ```
 
@@ -142,6 +143,7 @@ Under [this link][usb-debuggin-android] you can discover how to enable USB debug
 After enabling USB debugging on your Android device and connecting it to your computer with a USB cable, you can simply run the following command to build the app:
 
 ```bash
+cordova platforms add android
 cordova build android
 ```
 
