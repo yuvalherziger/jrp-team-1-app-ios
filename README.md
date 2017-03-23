@@ -39,6 +39,7 @@ In order to emulate the app, you will need to install all of the following on yo
     ```bash
     sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
     ```
+    ![](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/readme-images/xcode.gif?raw=true)
     
     Type in your password when prompted to, and that's it.
 
