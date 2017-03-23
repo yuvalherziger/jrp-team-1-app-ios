@@ -1,4 +1,4 @@
-# JRP Team 1 (Consumption) Study App
+# JRP Team 1 (Consumption) Study iOS App
 
 This tutorial will describe how you can run and test the app on your own computer (Mac only, sorry :smiley:) 
 
