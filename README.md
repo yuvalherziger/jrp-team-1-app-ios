@@ -124,7 +124,7 @@ Next, let's use the newly installed _git_ tool to clone the app from this reposi
 git clone https://github.com/yuvalherziger/jrp-team-1-app.git
 ```
 
-After the numbers finish crunching, you will have a new folder named _**jrp-team-1-app**_ in place. Let's go ahead change the working directory to the root app directory:
+After the numbers finish crunching, you will have a new folder named _**jrp-team-1-app**_ in place. Let's go ahead and change the working directory to the root app directory:
 
 ```bash
 cd jrp-team-1-app
