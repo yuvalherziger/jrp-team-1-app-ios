@@ -12,7 +12,6 @@ This tutorial will describe how you can run and test the app on your own compute
   * **(1.5)** [Installing git](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#15-installing-git)
 * **(2)** [Cloning the app code](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#2-cloning-the-app-code) 
 * **(3)** [Emulating the app on iOS](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#3-emulating-the-app-on-ios) 
-* **(4)** [Emulating the app on Android](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#4-emulating-the-app-on-android)
 
 ## (1) Prerequisites
 
@@ -31,7 +30,7 @@ In order to emulate the app, you will need to install all of the following on yo
     
     After the installation is completed, **open the Xcode** app to simply accept the license agreement.
     
-    ![](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/readme-images/xcode-accept.jpg?raw=true)
+    ![](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/readme-images/xcode-accept.jpg?raw=true)
     
     After accepting the license agreement, there's only one step you need to take:
     
@@ -41,7 +40,7 @@ In order to emulate the app, you will need to install all of the following on yo
     ```bash
     sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
     ```
-    ![](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/readme-images/xcode.gif?raw=true)
+    ![](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/readme-images/xcode.gif?raw=true)
     
     Type in your password when prompted to, and that's it.
 
@@ -147,42 +146,4 @@ This command just built an ios app that's ready to be emulated. Lastly, let's ru
 cordova emulate ios
 ```
 
-## (4) Emulating the app on Android
-
-Since emulating an Android device...
-
-1. requires a long setup that entails the installation of Android Studio and an AVD (**A**ndroid **V**irtual **D**evice);
-2. tends to be slow; 
-
-...I would strongly advise you to enable USB debugging on an Android device (provided that you posses one) and test the app on it. 
-Under [this link][usb-debuggin-android] you can discover how to enable USB debugging on your Android device.
-
-After enabling USB debugging on your Android device and connecting it to your computer with a USB cable, you can simply run the following command to build the app:
-
-```bash
-cordova platforms add android
-cordova build android
-```
-
-Afterwards you should be able to run the app on your device by running the following command:
-```bash
-cordova run android
-```
-
-Cordova should automatically detect your connected device and target the app to it.
-
- 
-It just might be that you don't have an Android device, and in this case you can visit [this link][android-emulator-mac] to find out how to create an Android Emulator.
-
-
-Do mind the fact that you already have `git` and `homebrew` installed on your Mac from the previous steps of this guide.
-
-If you have gone down the path of installing an Android emulator, the command to emulate it is the following one:
-
-```bash
-cordova emulate android
-```
-
-[usb-debuggin-android]: https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm
 [app-store-xcode]: https://itunes.apple.com/us/app/xcode/id497799835?mt=12
-[android-emulator-mac]: :https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
