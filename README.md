@@ -2,6 +2,8 @@
 
 This tutorial will describe how you can run and test the app on your own computer (Mac only, sorry :smiley:) 
 
+![](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/readme-images/app-screenshot.jpg =250x)
+
 ## Table of Contents:
 
 * **(1)** [Prerequisites](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#1-prerequisites)
