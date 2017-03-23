@@ -2,7 +2,7 @@
 
 This tutorial will describe how you can run and test the app on your own computer (Mac only, sorry :smiley:) 
 
-![screenshot](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/readme-images/app-screenshot.jpg){ width=10% }
+<img src="readme-images/app-screenshot.jpg" alt="screenshot" style="width: 20px;"/>
 
 ## Table of Contents:
 
