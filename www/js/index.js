@@ -183,9 +183,9 @@ var calculateNextNotificationTime = function() {
 
 var scheduleNotification = function(notificationTime, day) {
     cordova.plugins.notification.local.schedule({
-        id: day,
+        id: (day - 1),
         title: "It's time!",
-        text: "Please complete day " + day + " of the consumption study ✍️",
+        text: "Please complete day " + (day - 1) + " of the consumption study ✍️",
         at: notificationTime,
         every: "day"
     });
