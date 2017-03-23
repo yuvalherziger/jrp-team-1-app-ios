@@ -1,4 +1,4 @@
-# JRP Team 1 (Consumption) Study App
+# JRP Team 1 (Consumption) Study iOS App
 
 This tutorial will describe how you can run and test the app on your own computer (Mac only, sorry :smiley:) 
 
@@ -6,14 +6,14 @@ This tutorial will describe how you can run and test the app on your own compute
 
 ## Table of Contents:
 
-* **(1)** [Prerequisites](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#1-prerequisites)
-  * **(1.1)** [Installing Xcode](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#11-installing-xcode)
-  * **(1.2)** [Installing homebrew](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#12-installing-homebrew)
-  * **(1.3)** [Installing npm](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#13-installing-npm)
-  * **(1.4)** [Installing Apache Cordova](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#14-installing-apache-cordova)
-  * **(1.5)** [Installing git](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#15-installing-git)
-* **(2)** [Cloning the app code](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#2-cloning-the-app-code) 
-* **(3)** [Emulating the app on iOS](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/README.md#3-emulating-the-app-on-ios) 
+* **(1)** [Prerequisites](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#1-prerequisites)
+  * **(1.1)** [Installing Xcode](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#11-installing-xcode)
+  * **(1.2)** [Installing homebrew](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#12-installing-homebrew)
+  * **(1.3)** [Installing npm](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#13-installing-npm)
+  * **(1.4)** [Installing Apache Cordova](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#14-installing-apache-cordova)
+  * **(1.5)** [Installing git](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#15-installing-git)
+* **(2)** [Cloning the app code](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#2-cloning-the-app-code) 
+* **(3)** [Emulating the app on iOS](https://github.com/yuvalherziger/jrp-team-1-app-ios/blob/master/README.md#3-emulating-the-app-on-ios) 
 
 ## (1) Prerequisites
 
@@ -122,20 +122,20 @@ cd ~/workspace
 Next, let's use the newly installed _git_ tool to clone the app from this repository:
 
 ```bash
-git clone https://github.com/yuvalherziger/jrp-team-1-app.git
+git clone https://github.com/yuvalherziger/jrp-team-1-app-ios.git
 ```
 
-After the numbers finish crunching, you will have a new folder named _**jrp-team-1-app**_ in place. Let's go ahead and change the working directory to the root app directory:
+After the numbers finish crunching, you will have a new folder named _**jrp-team-1-app-ios**_ in place. Let's go ahead and change the working directory to the root app directory:
 
 ```bash
-cd jrp-team-1-app
+cd jrp-team-1-app-ios
 ```
 
 ## (3) Emulating the app on iOS
 
 Now for the fun part :tada:
 
-While in the _**jrp-team-1-app**_ working directory, type the following command:
+While in the _**jrp-team-1-app-ios**_ working directory, type the following command:
 
 ```bash
 cordova platforms add ios
