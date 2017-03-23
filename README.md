@@ -31,6 +31,8 @@ In order to emulate the app, you will need to install all of the following on yo
     
     After the installation is completed, **open the Xcode** app to simply accept the license agreement.
     
+    ![](https://github.com/yuvalherziger/jrp-team-1-app/blob/master/readme-images/xcode-accept.jpg?raw=true)
+    
     After accepting the license agreement, there's only one step you need to take:
     
     1. Open your terminal (CMD + T and type `terminal`)
