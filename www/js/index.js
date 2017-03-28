@@ -4,18 +4,15 @@ Number.prototype.padLeft = function(base, chr) {
 };
 
 document.addEventListener('deviceready', function () {
-    var permissionGranted = false;
-
     cordova.plugins.notification.local.hasPermission(function (granted) {
-        if (granted == true) {
-            permissionGranted = true;
-        }
-        else {
+        if (!granted) {
             cordova.plugins.notification.local.registerPermission(function (granted) {
-                if (granted === false) {
-
-                } else {
-                    permissionGranted = true;
+                if (!granted) {
+                    mainView.router.loadPage({
+                        url: 'authorization.html',
+                        ignoreCache: true,
+                        reload: false
+                    });
                 }
             });
         }
@@ -164,7 +161,7 @@ var initProgress = function() {
             var clicked = localStorage.getItem("linkClickProgressDay" + i);
             var html = 'Day ' + i;
             if (clicked === 'true') {
-                 html += ' <img src="img/notification_done.png" style="height: 15px; vertical-align:text-top"/>';
+                html += ' <img src="img/notification_done.png" style="height: 15px; vertical-align:text-top"/>';
 
             }
             $$("#day" + i).html(html);
@@ -304,4 +301,21 @@ var getStudyUrls = function() {
         });
     $$("#loading").hide();
     $$("#content").attr('style', 'display: block');
+};
+
+var initAuthorizationProcess = function() {
+    cordova.plugins.notification.local.hasPermission(function (granted) {
+        if (granted === true) {
+            console.log('1');
+        }
+        else {
+            cordova.plugins.notification.local.registerPermission(function (granted) {
+                if (granted === false) {
+                    console.log('2');
+                } else {
+                    console.log('3');
+                }
+            });
+        }
+    });
 };
