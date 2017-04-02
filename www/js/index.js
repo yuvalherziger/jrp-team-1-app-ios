@@ -115,8 +115,14 @@ var render = function() {
 
 var initLinkClickEvents = function() {
     $$(".dayLink").click(function() {
-        window.open($$(this).attr('data-link'), '_system');
-        console.log()
+        var currentLink = $$(this).attr('data-link');
+        try {
+            var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
+            inAppBrowserRef.addEventListener('exit', render);
+        } catch (e) {
+            window.open(currentLink, '_system');
+        }
+
     });
 };
 
@@ -201,7 +207,7 @@ var linkClicked = function(day) {
             }
         }
         setParticipantProgress(participantProgress);
-        render();
+        //render();
     } catch (e) {
         console.debug(e.toString());
     }
