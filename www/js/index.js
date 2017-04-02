@@ -5,7 +5,6 @@ Number.prototype.padLeft = function(base, chr) {
 
 document.addEventListener('deviceready', function () {
     initAuth();
-    //setTimeout(initAuth, 11000);
     try {
         initProgress();
     } catch(e) {
