@@ -5,7 +5,7 @@ Number.prototype.padLeft = function(base, chr) {
 
 document.addEventListener('deviceready', function () {
     initAuth();
-
+    //setTimeout(initAuth, 11000);
     try {
         initProgress();
     } catch(e) {
@@ -83,9 +83,6 @@ var render = function() {
         var clicked = participantProgress.linksClicked[i].clicked;
         var confirmed = participantProgress.linksClicked[i].dateConfirmed !== null;
         var day = participantProgress.linksClicked[i].day;
-
-        console.log('day', day);
-        console.log('day - 1', day - 1);
 
         html = (day === 1 ? 'Intake' : 'Day ' + (day - 1));
         if (clicked === true && confirmed) {
@@ -286,11 +283,10 @@ var getStudyUrls = function() {
         url,
         data,
         function (data, status, xhr) {
-            console.log('got the data successfully');
             appendStudyUrls(data);
         },
         function (xhr, status) {
-            console.log('got error', xhr, status);
+            console.debug('got error', xhr, status);
             appendStudyUrls(studyUrls);
         });
     $$("#loading").hide();
@@ -299,23 +295,28 @@ var getStudyUrls = function() {
 
 var permissionCheckCallback = function(exists) {
     if (!exists) {
-        console.log('not granted');
-        cordova.plugins.notification.local.registerPermission(permissionRegistrationCallback);
+        setTimeout(triggerAuthorizationPrompt, 1000);
     }
+};
+
+var triggerAuthorizationPrompt = function() {
+    var message = 'Welcome to the Excessive Consumption Study app! Important: this app needs your permission to send notifications.';
+    navigator.notification.alert(
+        message,
+        function() {
+            cordova.plugins.notification.local.registerPermission(permissionRegistrationCallback);
+            },
+        'Welcome',
+        'Confirm'
+    );
+
+
 };
 
 var permissionRegistrationCallback = function(granted) {
     if (!granted) {
-        console.log('not grantedAfterPrompt');
         mainView.router.loadPage({
             url: 'authorization.html',
-            ignoreCache: true,
-            reload: false
-        });
-    } else {
-        console.log('grantedAfterPrompt');
-        mainView.router.loadPage({
-            url: 'index.html',
             ignoreCache: true,
             reload: false
         });
@@ -324,29 +325,4 @@ var permissionRegistrationCallback = function(granted) {
 
 var initAuth = function() {
     cordova.plugins.notification.local.hasPermission(permissionCheckCallback);
-};
-
-var initAuthorizationProcess = function() {
-    cordova.plugins.notification.local.hasPermission(function (granted) {
-        if (granted === true) {
-            mainView.router.loadPage({
-                url: 'index.html',
-                ignoreCache: true,
-                reload: false
-            });
-        }
-        else {
-            cordova.plugins.notification.local.registerPermission(function (granted) {
-                if (granted === false) {
-                    // nothing to do
-                } else {
-                    mainView.router.loadPage({
-                        url: 'index.html',
-                        ignoreCache: true,
-                        reload: false
-                    });
-                }
-            });
-        }
-    });
 };
