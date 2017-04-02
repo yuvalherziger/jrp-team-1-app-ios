@@ -4,19 +4,7 @@ Number.prototype.padLeft = function(base, chr) {
 };
 
 document.addEventListener('deviceready', function () {
-    cordova.plugins.notification.local.hasPermission(function (granted) {
-        if (!granted) {
-            cordova.plugins.notification.local.registerPermission(function (granted) {
-                if (!granted) {
-                    mainView.router.loadPage({
-                        url: 'authorization.html',
-                        ignoreCache: true,
-                        reload: false
-                    });
-                }
-            });
-        }
-    });
+    initAuth();
 
     try {
         initProgress();
@@ -309,17 +297,54 @@ var getStudyUrls = function() {
     $$("#content").attr('style', 'display: block');
 };
 
+var permissionCheckCallback = function(exists) {
+    if (!exists) {
+        console.log('not granted');
+        cordova.plugins.notification.local.registerPermission(permissionRegistrationCallback);
+    }
+};
+
+var permissionRegistrationCallback = function(granted) {
+    if (!granted) {
+        console.log('not grantedAfterPrompt');
+        mainView.router.loadPage({
+            url: 'authorization.html',
+            ignoreCache: true,
+            reload: false
+        });
+    } else {
+        console.log('grantedAfterPrompt');
+        mainView.router.loadPage({
+            url: 'index.html',
+            ignoreCache: true,
+            reload: false
+        });
+    }
+};
+
+var initAuth = function() {
+    cordova.plugins.notification.local.hasPermission(permissionCheckCallback);
+};
+
 var initAuthorizationProcess = function() {
     cordova.plugins.notification.local.hasPermission(function (granted) {
         if (granted === true) {
-            console.log('1');
+            mainView.router.loadPage({
+                url: 'index.html',
+                ignoreCache: true,
+                reload: false
+            });
         }
         else {
             cordova.plugins.notification.local.registerPermission(function (granted) {
                 if (granted === false) {
-                    console.log('2');
+                    // nothing to do
                 } else {
-                    console.log('3');
+                    mainView.router.loadPage({
+                        url: 'index.html',
+                        ignoreCache: true,
+                        reload: false
+                    });
                 }
             });
         }
