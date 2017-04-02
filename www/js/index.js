@@ -309,8 +309,6 @@ var triggerAuthorizationPrompt = function() {
         'Welcome',
         'Confirm'
     );
-
-
 };
 
 var permissionRegistrationCallback = function(granted) {
