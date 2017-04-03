@@ -2,7 +2,7 @@
 <widget id="com.jrp.consumption" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Consumption</name>
     <description>
-        JRP team 1 consumption study app
+        JRP consumption study app
     </description>
     <author email="yuvalhrz@gmail.com" href="https://github.com/yuvalherziger">
         Yuval Herziger
