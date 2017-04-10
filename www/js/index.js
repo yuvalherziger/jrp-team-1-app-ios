@@ -61,7 +61,12 @@ var render = function() {
             $$("#nextStudyRedirect").click(function() {
                 linkClicked(lastStudy);
                 var url = $$("#day" + lastStudy).attr('data-link');
-                window.open(url, '_system');
+                try {
+                    var inAppBrowserRef = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+                    inAppBrowserRef.addEventListener('exit', render);
+                } catch (e) {
+                    window.open(url, '_system');
+                }
             });
         }
         if (lastStudy < 8) {
