@@ -198,7 +198,7 @@ var linkClicked = function(day) {
         setParticipantProgress(participantProgress);
         //render();
     } catch (e) {
-        console.debug(e.toString());
+
     }
 };
 
@@ -209,7 +209,8 @@ var decrementStudyProgress = function() {
         participantProgress.lastStudy = lastStudy - 1;
         for (var i = 0; i < participantProgress.linksClicked.length; i++) {
             if (lastStudy === participantProgress.linksClicked[i].day) {
-                cancelNotification(participantProgress.linksClicked[i].day);
+                cancelNotification(participantProgress.linksClicked[i].day + 1);
+                scheduleNotification(calculateNextNotificationTime(), participantProgress.linksClicked[i].day);
                 participantProgress.linksClicked[i].dateClicked = null;
                 participantProgress.linksClicked[i].dateConfirmed = null;
                 participantProgress.linksClicked[i].clicked = false;
@@ -230,7 +231,8 @@ var formatDate = function(d) {
 var cancelNotification = function(day) {
     try {
         cordova.plugins.notification.local.cancel(day);
-    } catch (e) { }
+    } catch (e) {
+    }
 };
 
 var studyCompletionConfirmed = function(day) {
@@ -259,7 +261,6 @@ var studyCompletionConfirmed = function(day) {
         setParticipantProgress(participantProgress);
         render();
     } catch (e) {
-        console.debug(e.toString());
         render();
     }
 };
@@ -316,7 +317,7 @@ var triggerAuthorizationPrompt = function() {
         message,
         function() {
             cordova.plugins.notification.local.registerPermission(permissionRegistrationCallback);
-            },
+        },
         'Welcome',
         'Confirm'
     );
