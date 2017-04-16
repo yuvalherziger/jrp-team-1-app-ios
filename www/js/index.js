@@ -72,7 +72,8 @@ var render = function() {
         if (lastStudy < 8) {
             $$("#nextStudyMessage").html('Your next task is day <strong>' + lastStudy + '</strong> questionnaire.');
         } else {
-            $$("#nextStudyMessage").html('Thank you for completing the study!');
+            var completedText = "Thank you, you have completed the intervention! We will contact you via email in one month to check up, and show you a report of your progress. If you have any questions, please email us.";
+            $$("#nextStudyMessage").html(completedText);
         }
     } else {
         $$("#initialMessage").attr('style', 'display: block');
