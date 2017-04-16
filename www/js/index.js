@@ -104,12 +104,15 @@ var render = function() {
 
 var initLinkClickEvents = function() {
     $$(".dayLink").click(function() {
-        var currentLink = $$(this).attr('data-link');
-        try {
-            var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
-            inAppBrowserRef.addEventListener('exit', render);
-        } catch (e) {
-            window.open(currentLink, '_system');
+        var allowed = isAllowedToAccessStudyAndAlertIfNot(false);
+        if (allowed) {
+            var currentLink = $$(this).attr('data-link');
+            try {
+                var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
+                inAppBrowserRef.addEventListener('exit', render);
+            } catch (e) {
+                window.open(currentLink, '_system');
+            }
         }
 
     });
@@ -196,7 +199,6 @@ var linkClicked = function(day) {
             }
         }
         setParticipantProgress(participantProgress);
-        //render();
     } catch (e) {
 
     }
@@ -335,4 +337,46 @@ var permissionRegistrationCallback = function(granted) {
 
 var initAuth = function() {
     cordova.plugins.notification.local.hasPermission(permissionCheckCallback);
+};
+
+var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
+    var participantProgress = getParticipantProgress();
+    if (participantProgress.lastStudy === 0 || isRevisit) {
+        return true;
+    }
+    var i = participantProgress.linksClicked.length - 1;
+    var lastDateConfirmed = null;
+
+    do {
+        lastDateConfirmed = participantProgress.linksClicked[i].dateConfirmed;
+        i--;
+    } while (i >= 0 && lastDateConfirmed === null);
+
+    if (lastDateConfirmed === null) {
+        return true;
+    }
+
+    var now = new Date();
+    var then = new Date(lastDateConfirmed);
+    var nowAndThenDiffHours = Math.abs(now - then) / 36e5;
+
+    if (nowAndThenDiffHours < 12) {
+        var timeLeft = 12 - nowAndThenDiffHours;
+        var hours = parseInt(timeLeft);
+        var minutes = Math.floor(timeLeft % parseInt(timeLeft) * 60);
+        var message = 'You will be able to access the next questionnaire in ' + hours + ' hours and ' + minutes + ' minutes';
+        showMessage(message, null, 'Too soon', 'OK');
+        return false;
+    }
+
+    return true;
+};
+
+var showMessage = function(message, callback, title, buttonText) {
+    navigator.notification.alert(
+        message,
+        callback,
+        title,
+        buttonText
+    );
 };
