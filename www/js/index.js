@@ -59,7 +59,7 @@ var render = function() {
             $$("#lastStudyLinkClickTime").html(lastLinkClicked);
 
             $$("#nextStudyRedirect").click(function() {
-                linkClicked(lastStudy);
+                linkClicked(lastStudy, true);
                 var url = $$("#day" + lastStudy).attr('data-link');
                 try {
                     var inAppBrowserRef = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
@@ -183,22 +183,23 @@ var scheduleNotification = function(notificationTime, day) {
     });
 };
 
-var linkClicked = function(day) {
-    try {
-        var participantProgress = getParticipantProgress();
-        participantProgress.lastStudy = day;
-        participantProgress.confirmedState = false;
+var linkClicked = function(day, isRevisit) {
+    if (isAllowedToAccessStudyAndAlertIfNot(isRevisit)) {
+        try {
+            var participantProgress = getParticipantProgress();
+            participantProgress.lastStudy = day;
+            participantProgress.confirmedState = false;
 
-        for (var i = 0; i < participantProgress.linksClicked.length; i++) {
-            if (participantProgress.linksClicked[i].day === parseInt(day)) {
-                participantProgress.linksClicked[i].clicked = true;
-                participantProgress.linksClicked[i].dateClicked = new Date();
+            for (var i = 0; i < participantProgress.linksClicked.length; i++) {
+                if (participantProgress.linksClicked[i].day === parseInt(day)) {
+                    participantProgress.linksClicked[i].clicked = true;
+                    participantProgress.linksClicked[i].dateClicked = new Date();
+                }
             }
-        }
-        setParticipantProgress(participantProgress);
-        //render();
-    } catch (e) {
+            setParticipantProgress(participantProgress);
+        } catch (e) {
 
+        }
     }
 };
 
@@ -335,4 +336,41 @@ var permissionRegistrationCallback = function(granted) {
 
 var initAuth = function() {
     cordova.plugins.notification.local.hasPermission(permissionCheckCallback);
+};
+
+var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
+    var participantProgress = getParticipantProgress();
+    if (participantProgress.lastStudy === 0 || isRevisit) {
+        return true;
+    }
+    var i = participantProgress.linksClicked.length - 1;
+    var lastDateConfirmed = null;
+
+    do {
+        lastDateConfirmed = participantProgress.linksClicked[i].dateConfirmed;
+        i--;
+    } while (i >= 0 && lastDateConfirmed === null);
+
+    if (lastDateConfirmed === null) {
+        return true;
+    }
+
+    var now = new Date();
+    var then = new Date(lastDateConfirmed);
+    var nowAndThenDiffHours = Math.abs(now - then) / 36e5;
+
+    if (nowAndThenDiffHours < 12) {
+        var hours = parseInt(nowAndThenDiffHours);
+        var minutes = nowAndThenDiffHours % parseInt(nowAndThenDiffHours);
+        var message = 'You will be able to access the next study in ' + hours + ' hours and ' + minutes + ' minutes';
+        navigator.notification.alert(
+            message,
+            null,
+            'Too soon',
+            'OK'
+        );
+        return false;
+    }
+
+    return true;
 };
