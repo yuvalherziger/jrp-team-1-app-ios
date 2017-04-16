@@ -59,7 +59,7 @@ var render = function() {
             $$("#lastStudyLinkClickTime").html(lastLinkClicked);
 
             $$("#nextStudyRedirect").click(function() {
-                linkClicked(lastStudy, true);
+                linkClicked(lastStudy);
                 var url = $$("#day" + lastStudy).attr('data-link');
                 try {
                     var inAppBrowserRef = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
@@ -104,12 +104,15 @@ var render = function() {
 
 var initLinkClickEvents = function() {
     $$(".dayLink").click(function() {
-        var currentLink = $$(this).attr('data-link');
-        try {
-            var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
-            inAppBrowserRef.addEventListener('exit', render);
-        } catch (e) {
-            window.open(currentLink, '_system');
+        var allowed = isAllowedToAccessStudyAndAlertIfNot(false);
+        if (allowed) {
+            var currentLink = $$(this).attr('data-link');
+            try {
+                var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
+                inAppBrowserRef.addEventListener('exit', render);
+            } catch (e) {
+                window.open(currentLink, '_system');
+            }
         }
 
     });
@@ -183,23 +186,21 @@ var scheduleNotification = function(notificationTime, day) {
     });
 };
 
-var linkClicked = function(day, isRevisit) {
-    if (isAllowedToAccessStudyAndAlertIfNot(isRevisit)) {
-        try {
-            var participantProgress = getParticipantProgress();
-            participantProgress.lastStudy = day;
-            participantProgress.confirmedState = false;
+var linkClicked = function(day) {
+    try {
+        var participantProgress = getParticipantProgress();
+        participantProgress.lastStudy = day;
+        participantProgress.confirmedState = false;
 
-            for (var i = 0; i < participantProgress.linksClicked.length; i++) {
-                if (participantProgress.linksClicked[i].day === parseInt(day)) {
-                    participantProgress.linksClicked[i].clicked = true;
-                    participantProgress.linksClicked[i].dateClicked = new Date();
-                }
+        for (var i = 0; i < participantProgress.linksClicked.length; i++) {
+            if (participantProgress.linksClicked[i].day === parseInt(day)) {
+                participantProgress.linksClicked[i].clicked = true;
+                participantProgress.linksClicked[i].dateClicked = new Date();
             }
-            setParticipantProgress(participantProgress);
-        } catch (e) {
-
         }
+        setParticipantProgress(participantProgress);
+    } catch (e) {
+
     }
 };
 
@@ -360,17 +361,22 @@ var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
     var nowAndThenDiffHours = Math.abs(now - then) / 36e5;
 
     if (nowAndThenDiffHours < 12) {
-        var hours = parseInt(nowAndThenDiffHours);
-        var minutes = nowAndThenDiffHours % parseInt(nowAndThenDiffHours);
-        var message = 'You will be able to access the next study in ' + hours + ' hours and ' + minutes + ' minutes';
-        navigator.notification.alert(
-            message,
-            null,
-            'Too soon',
-            'OK'
-        );
+        var timeLeft = 12 - nowAndThenDiffHours;
+        var hours = parseInt(timeLeft);
+        var minutes = Math.floor(timeLeft % parseInt(timeLeft) * 60);
+        var message = 'You will be able to access the next questionnaire in ' + hours + ' hours and ' + minutes + ' minutes';
+        showMessage(message, null, 'Too soon', 'OK');
         return false;
     }
 
     return true;
+};
+
+var showMessage = function(message, callback, title, buttonText) {
+    navigator.notification.alert(
+        message,
+        callback,
+        title,
+        buttonText
+    );
 };
