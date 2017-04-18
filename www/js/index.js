@@ -346,19 +346,19 @@ var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
         return true;
     }
     var i = participantProgress.linksClicked.length - 1;
-    var lastDateConfirmed = null;
+    var lastDateClicked = null;
 
     do {
-        lastDateConfirmed = participantProgress.linksClicked[i].dateConfirmed;
+        lastDateClicked = participantProgress.linksClicked[i].dateClicked;
         i--;
-    } while (i >= 0 && lastDateConfirmed === null);
+    } while (i >= 0 && lastDateClicked === null);
 
-    if (lastDateConfirmed === null) {
+    if (lastDateClicked === null) {
         return true;
     }
 
     var now = new Date();
-    var then = new Date(lastDateConfirmed);
+    var then = new Date(lastDateClicked);
     var nowAndThenDiffHours = Math.abs(now - then) / 36e5;
 
     if (nowAndThenDiffHours < 12) {
