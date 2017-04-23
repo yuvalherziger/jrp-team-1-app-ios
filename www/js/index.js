@@ -4,11 +4,22 @@ Number.prototype.padLeft = function(base, chr) {
 };
 
 document.addEventListener('deviceready', function () {
+    var appLaunchCount = window.localStorage.getItem('launchCount');
+    try {
+        if (typeof appLaunchCount === 'undefined' || appLaunchCount === null || parseInt(appLaunchCount) === 1) {
+            localStorage.setItem('participantProgress', null);
+            cordova.plugins.notification.local.cancelAll();
+            window.localStorage.setItem('launchCount', 1);
+        } else {
+            window.localStorage.setItem('launchCount', parseInt(window.localStorage.getItem('launchCount')) + 1);
+        }
+    } catch (e) { }
+
     initAuth();
     try {
         initProgress();
     } catch(e) {
-        alert(e.toString());
+        console.debug(e.toString());
     }
 
 }, false);
@@ -124,7 +135,7 @@ var initProgress = function() {
     initLinkClickEvents();
     var initialParticipantProgress = {
         linksClicked: [
-            {day: 1, clicked: false, dateClicked: null, dateConfirmed: null},
+            {day: 1, clicked: false, dateClicked: null, dateConfirmed: null },
             {day: 2, clicked: false, dateClicked: null, dateConfirmed: null },
             {day: 3, clicked: false, dateClicked: null, dateConfirmed: null },
             {day: 4, clicked: false, dateClicked: null, dateConfirmed: null },
@@ -178,12 +189,13 @@ var calculateNextNotificationTime = function() {
 };
 
 var scheduleNotification = function(notificationTime, day) {
+    var questionnaireText = day === 1 ? "the intake questionnaire" : "day " + (day - 1);
     cordova.plugins.notification.local.schedule({
         id: (day - 1),
         title: "It's time!",
-        text: "Please complete day " + (day - 1) + " of the consumption study ✍️",
+        text: "Please complete " + questionnaireText + " of the consumption study ✍️",
         at: notificationTime,
-        every: "day"
+        every: "minute"
     });
 };
 
@@ -212,7 +224,7 @@ var decrementStudyProgress = function() {
         participantProgress.lastStudy = lastStudy - 1;
         for (var i = 0; i < participantProgress.linksClicked.length; i++) {
             if (lastStudy === participantProgress.linksClicked[i].day) {
-                cancelNotification(participantProgress.linksClicked[i].day + 1);
+                cancelNotifications();
                 scheduleNotification(calculateNextNotificationTime(), participantProgress.linksClicked[i].day);
                 participantProgress.linksClicked[i].dateClicked = null;
                 participantProgress.linksClicked[i].dateConfirmed = null;
@@ -231,9 +243,9 @@ var formatDate = function(d) {
         [d.getHours().padLeft(), d.getMinutes().padLeft()].join(':');
 };
 
-var cancelNotification = function(day) {
+var cancelNotifications = function() {
     try {
-        cordova.plugins.notification.local.cancel(day);
+        cordova.plugins.notification.local.cancelAll();
     } catch (e) {
     }
 };
@@ -244,7 +256,7 @@ var studyCompletionConfirmed = function(day) {
             day = getParticipantProgress().lastStudy;
         }
         day = parseInt(day);
-        cancelNotification(day);
+        cancelNotifications();
 
         var notificationTime = calculateNextNotificationTime();
         if (day < 8) {
