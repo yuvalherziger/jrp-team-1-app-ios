@@ -6,12 +6,11 @@ Number.prototype.padLeft = function(base, chr) {
 document.addEventListener('deviceready', function () {
     var appLaunchCount = window.localStorage.getItem('launchCount');
     try {
-        if (typeof appLaunchCount === 'undefined' || appLaunchCount === null || parseInt(appLaunchCount) === 1) {
-            localStorage.setItem('participantProgress', null);
+        if (typeof appLaunchCount === 'undefined' || appLaunchCount === null) {
             cordova.plugins.notification.local.cancelAll();
-            window.localStorage.setItem('launchCount', 1);
+            localStorage.setItem('launchCount', 1);
         } else {
-            window.localStorage.setItem('launchCount', parseInt(window.localStorage.getItem('launchCount')) + 1);
+            localStorage.setItem('launchCount', parseInt(localStorage.getItem('launchCount')) + 1);
         }
     } catch (e) { }
 
