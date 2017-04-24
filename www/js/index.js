@@ -45,7 +45,7 @@ var getLastLinkClick = function() {
 
 var render = function() {
     var participantProgress = getParticipantProgress();
-    var lastStudy = participantProgress.lastStudy;
+    var lastStudy = parseInt(participantProgress.lastStudy);
     var confirmedState = participantProgress.confirmedState;
     if (lastStudy > 0) {
         if (confirmedState === true) {
@@ -69,7 +69,7 @@ var render = function() {
             $$("#lastStudyLinkClickTime").html(lastLinkClicked);
 
             $$("#nextStudyRedirect").click(function() {
-                linkClicked(lastStudy);
+                markLinkClicked(lastStudy);
                 var url = $$("#day" + lastStudy).attr('data-link');
                 try {
                     var inAppBrowserRef = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
@@ -113,11 +113,28 @@ var render = function() {
     }
 };
 
+var markLinkClicked = function(day) {
+    var participantProgress = getParticipantProgress();
+    participantProgress.lastStudy = day;
+    participantProgress.confirmedState = false;
+
+    for (var i = 0; i < participantProgress.linksClicked.length; i++) {
+        if (participantProgress.linksClicked[i].day === parseInt(day)) {
+            participantProgress.linksClicked[i].clicked = true;
+            participantProgress.linksClicked[i].dateClicked = new Date();
+            break;
+        }
+    }
+    setParticipantProgress(participantProgress);
+};
+
 var initLinkClickEvents = function() {
     $$(".dayLink").click(function() {
-        var allowed = isAllowedToAccessStudyAndAlertIfNot(false);
+        var day = $$(this).attr('data-day');
+        var allowed = isAllowedToAccessStudyAndAlertIfNot(false, day);
         if (allowed) {
             var currentLink = $$(this).attr('data-link');
+            markLinkClicked(day);
             try {
                 var inAppBrowserRef = cordova.InAppBrowser.open(currentLink, '_blank', 'location=yes');
                 inAppBrowserRef.addEventListener('exit', render);
@@ -194,26 +211,8 @@ var scheduleNotification = function(notificationTime, day) {
         title: "It's time!",
         text: "Please complete " + questionnaireText + " of the consumption study ✍️",
         at: notificationTime,
-        every: "minute"
+        every: "day"
     });
-};
-
-var linkClicked = function(day) {
-    try {
-        var participantProgress = getParticipantProgress();
-        participantProgress.lastStudy = day;
-        participantProgress.confirmedState = false;
-
-        for (var i = 0; i < participantProgress.linksClicked.length; i++) {
-            if (participantProgress.linksClicked[i].day === parseInt(day)) {
-                participantProgress.linksClicked[i].clicked = true;
-                participantProgress.linksClicked[i].dateClicked = new Date();
-            }
-        }
-        setParticipantProgress(participantProgress);
-    } catch (e) {
-
-    }
 };
 
 var decrementStudyProgress = function() {
@@ -351,9 +350,11 @@ var initAuth = function() {
     cordova.plugins.notification.local.hasPermission(permissionCheckCallback);
 };
 
-var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
+var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit, day) {
     var participantProgress = getParticipantProgress();
-    if (participantProgress.lastStudy === 0 || isRevisit) {
+    var firstStudy = participantProgress.lastStudy === 0;
+    var sameStudy = parseInt(day) === parseInt(participantProgress.lastStudy) && !participantProgress.confirmedState;
+    if (firstStudy || isRevisit || sameStudy) {
         return true;
     }
     var i = participantProgress.linksClicked.length - 1;
@@ -376,7 +377,7 @@ var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit) {
         var timeLeft = 12 - nowAndThenDiffHours;
         var hours = parseInt(timeLeft);
         var minutes = Math.floor(timeLeft % parseInt(timeLeft) * 60);
-        var message = 'You will be able to access the next questionnaire in ' + hours + ' hours and ' + minutes + ' minutes';
+        var message = 'You will be able to access the next questionnaire in ' + hours + ' hours ' + (minutes !== '00' ? ('and ' + minutes + ' minutes') : '');
         showMessage(message, null, 'Too soon', 'OK');
         return false;
     }
