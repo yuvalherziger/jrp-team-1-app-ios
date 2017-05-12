@@ -4,6 +4,14 @@ Number.prototype.padLeft = function(base, chr) {
 };
 
 document.addEventListener('deviceready', function () {
+    $$("#infoLink").click(function() {
+        var infoUrl = 'https://theconsumptionstudy.wixsite.com/info/information';
+        try {
+            cordova.InAppBrowser.open(infoUrl, '_blank', 'location=yes');
+        } catch (e) {
+            window.open(infoUrl, '_system');
+        }
+    });
     var appLaunchCount = window.localStorage.getItem('launchCount');
     try {
         if (typeof appLaunchCount === 'undefined' || appLaunchCount === null) {
