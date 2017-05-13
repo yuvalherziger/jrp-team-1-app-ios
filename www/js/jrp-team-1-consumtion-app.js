@@ -1,6 +1,7 @@
 // Initialize your app
 var jrpTeam1ConsumptionApp = new Framework7({
-    animateNavBackIcon: true
+    animateNavBackIcon: true,
+    swipePanel: 'left'
 });
 
 // Export selectors engine
