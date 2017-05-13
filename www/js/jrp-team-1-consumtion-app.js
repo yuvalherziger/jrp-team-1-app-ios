@@ -1,10 +1,13 @@
 // Initialize your app
-var jrpTeam1ConsumptionApp = new Framework7();
+var jrpTeam1ConsumptionApp = new Framework7({
+    animateNavBackIcon: true
+});
 
 // Export selectors engine
 var $$ = Dom7;
 
 // Add view
 var mainView = jrpTeam1ConsumptionApp.addView('.view-main', {
-    dynamicNavbar: false
+    domCache: true,
+    dynamicNavbar: true
 });

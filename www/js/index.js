@@ -4,14 +4,24 @@ Number.prototype.padLeft = function(base, chr) {
 };
 
 document.addEventListener('deviceready', function () {
-    $$("#infoLink").click(function() {
-        var infoUrl = 'https://theconsumptionstudy.wixsite.com/info/information';
+    $$("#developerLink").click(function() {
+        var devUrl = 'https://www.github.com/yuvalherziger/';
         try {
-            cordova.InAppBrowser.open(infoUrl, '_blank', 'location=yes');
+            cordova.InAppBrowser.open(devUrl, '_blank', 'location=yes');
         } catch (e) {
-            window.open(infoUrl, '_system');
+            window.open(devUrl, '_system');
         }
     });
+
+    $$("#teamLink").click(function() {
+        var teamUrl = 'https://theconsumptionstudy.wixsite.com/info';
+        try {
+            cordova.InAppBrowser.open(teamUrl, '_blank', 'location=yes');
+        } catch (e) {
+            window.open(teamUrl, '_system');
+        }
+    });
+
     var appLaunchCount = window.localStorage.getItem('launchCount');
     try {
         if (typeof appLaunchCount === 'undefined' || appLaunchCount === null) {
