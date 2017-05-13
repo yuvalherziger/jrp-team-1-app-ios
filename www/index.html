@@ -9,22 +9,50 @@
     <!-- Path to Framework7 Library CSS-->
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
-
 </head>
 <body class="theme-blue layout-white">
 <!-- Status bar overlay for fullscreen mode-->
 <div class="statusbar-overlay"></div>
 <!-- Panels overlay-->
 <div class="panel-overlay"></div>
+<!-- Left panel with reveal effect-->
+<div class="panel panel-left panel-reveal">
+    <div class="content-block">
+        <p>The Consumption Study</p>
+    </div>
+    <div class="content-block">
+        <a href="#index" class="close-panel">Home</a>
+    </div>
+    <div class="content-block">
+        <a href="#raffle" class="close-panel">Info & Disclaimers</a>
+    </div>
+    <div class="content-block">
+        <a href="#about" class="close-panel">About Us</a>
+    </div>
+</div>
 <!-- Views-->
 <div class="views">
     <!-- Your main view, should have "view-main" class-->
     <div class="view view-main">
         <!-- Top Navbar-->
         <div class="navbar">
-            <div class="navbar-inner">
+            <!-- Navbar inner for Index page-->
+            <div data-page="index" class="navbar-inner">
                 <!-- We have home navbar without left link-->
-                <div class="center sliding">Excessive Consumption Study</div>
+                <div class="center sliding">The Consumption Study</div>
+                <div class="right">
+                    <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                </div>
+            </div>
+            <!-- Navbar inner for Raffle Rules page-->
+            <div data-page="raffle" class="navbar-inner cached">
+                <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="center sliding">Info & Disclaimers</div>
+            </div>
+            <!-- Navbar inner for About Us page-->
+            <div data-page="about" class="navbar-inner cached">
+                <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="center sliding">About Us</div>
             </div>
         </div>
         <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -56,26 +84,26 @@
                     <div class="content-block-title">Questionnaires</div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day1" data-day="1" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Intake</a></div>
-                            <div class="col-50"><a href="#" id="day2" data-day="2" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 1</a></div>
+                            <div class="col-50"><a href="#" id="day1" data-day="1" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_cAMr40YJFIe3hxX" class="button button-fill bg-blue dayLink">Intake</a></div>
+                            <div class="col-50"><a href="#" id="day2" data-day="2" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_4UBP6WecP9VPa3b" class="button button-fill bg-blue dayLink">Day 1</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day3" data-day="3" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 2</a></div>
-                            <div class="col-50"><a href="#" id="day4" data-day="4" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 3</a></div>
+                            <div class="col-50"><a href="#" id="day3" data-day="3" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_572nKcehQwuV3Zr" class="button button-fill bg-blue dayLink">Day 2</a></div>
+                            <div class="col-50"><a href="#" id="day4" data-day="4" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_b8E22ZB0x9a8uiN" class="button button-fill bg-blue dayLink">Day 3</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day5" data-day="5" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 4</a></div>
-                            <div class="col-50"><a href="#" id="day6" data-day="6" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 5</a></div>
+                            <div class="col-50"><a href="#" id="day5" data-day="5" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_eK9hRscHUzV95NH" class="button button-fill bg-blue dayLink">Day 4</a></div>
+                            <div class="col-50"><a href="#" id="day6" data-day="6" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_emaqE9Udm70Yn7T" class="button button-fill bg-blue dayLink">Day 5</a></div>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-50"><a href="#" id="day7" data-day="7" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 6</a></div>
-                            <div class="col-50"><a href="#" id="day8" data-day="8" data-link="https://www.google.com" class="button button-fill bg-blue dayLink">Day 7</a></div>
+                            <div class="col-50"><a href="#" id="day7" data-day="7" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_25fZ2P2I9VAIjpH" class="button button-fill bg-blue dayLink">Day 6</a></div>
+                            <div class="col-50"><a href="#" id="day8" data-day="8" data-link="https://unikoelnpsych.eu.qualtrics.com/jfe/form/SV_bPDx2YQyRwUuHBj" class="button button-fill bg-blue dayLink">Day 7</a></div>
                         </div>
                     </div>
                     <div class="content-block-title userMistake" style="display: none">Didn't complete <span class="userMistakeLastStudy"></span>?</div>
@@ -90,16 +118,117 @@
                             <div class="col-100"><a class="button button-fill bg-blue external" data-rel="external" href="mailto:consumption.jrp@gmail.com">Contact us</a></div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="page cached" data-page="about">
+                <div class="page-content">
+                    <div class="content-block-title">Who are we?</div>
+                    <div class="content-block inset">
+                        <div class="content-block">
+                            <p>
+                                This intervention is developed by a group of international Psychology scholars aiming
+                                to help consumers reduce excessive consumption.
+                            </p>
+                            <p>
+                                The mobile application used in this intervention study was developed by <a id="developerLink" data-rel="external" href="javascript:void(0)">Yuval Herziger</a>.
+                            </p>
+                            <p>
+                                For more information, please visit <a data-rel="external" id="teamLink" href="javascript:void(0)">our website</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page cached" data-page="raffle">
+                <div class="page-content">
+                    <div class="content-block-title">Background and purpose</div>
+                    <div class="content-block inset">
+                        <div class="content-block-inner">
+                            <p>This is a request for you to participate in a week-long study aimed at reducing your non-essential purchasing
+                                behavior. The goal of the study is to gain a better understanding of ways to reduce excessive consumption.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">What does the study entail?</div>
+                    <div class="content-block inset">
+                        <div class="content-block-inner">
+                            <p>
+                                In order to participate in this intervention study, you have been asked to download a free application to your
+                                smartphone. All participation will take place through this app.
+                            </p>
+                            <p>
+                                The intervention will last for 7 days. The first and the last day will require the most participation from you, namely
+                                10-15 minutes. Each of the 5 remaining days will only demand 5 minutes of your time.
+                            </p>
+                            <p>
+                                On the first day, you will be asked to answer some questions about your spending habits and some questions
+                                related to your personality. We will also ask you about some demographical information, such as age, gender,
+                                income, and education.
+                            </p>
+                            <p>
+                                On each of the following days, you will be asked to answer a couple of questions about your mood. You might
+                                also be presented with some additional material. Finally, you will be asked to recall the number and costs of
+                                some of your recent purchases, if any.
+                            </p>
+                            <p>
+                                On the last day of the study, we will again ask you about your spending habits and personality. Lastly, you will
+                                be asked to reflect on your own consumption behavior. Throughout the study, your smartphone application
+                                will ping you once a day, kindly reminding you to continue your participation.
+                            </p>
+                            <p>
+                                After one month following your participation in the intervention, we will send you an email containing a link to a
+                                short online questionnaire.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">Lottery prize & additional benefits</div>
+                    <div class="content-block inset">
+                        <div class="content-block-inner">
+                            <p>
+                                Upon completion of participation, you will be eligible to win a lottery prize of 100 euro. In order to be eligible to
+                                take part in the lottery, you must have completed the full one-week intervention and your one-month follow-up
+                                assessment. One winner will be randomly selected from all complete survey responses. The research team will
+                                email the winner to coordinate the prize transfer. You will also receive information about your personal progress
+                                relating to your spending behavior upon study completion.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">Legal disclaimer</div>
+                    <div class="content-block inset">
+                        <div class="content-block-inner">
+                            <p style="font-weight: bold">
+                                Neither Apple inc. nor any of its subsidiaries are involved in any way with the above mentioned lottery
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">Requirements of participation</div>
+                    <div class="content-block inset">
+                        <div class="content-block-inner">
+                            <p>
+                                In order for you to participate in this study, you need to fulfill a few requirements. You must agree with the
+                                following criteria:
+                            </p>
+                            <div>
+                                <ol>
+                                    <li>I am over 18 years of age</li>
+                                    <li>I have a desire to reduce my non-essential spending (e.g., clothes)</li>
+                                    <li>I have not previously followed the social media trend promoting “Minimalism” (i.e., simplistic living)</li>
+                                    <li>I have no clinical diagnosis related to impulse control or addictions (such as compulsive buying disorder and
+                                        hoarding)</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-block-title">Got questions?</div>
                     <div class="content-block">
                         <div class="row">
-                            <div class="col-100"><a id="infoLink" class="button button-fill bg-blue external" href="#">Information & Legal Disclaimer</a></div>
+                            <div class="col-100"><a class="button button-fill bg-blue external" data-rel="external" href="mailto:consumption.jrp@gmail.com">Contact us</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Path to Cordova Library JS-->
 <script type="text/javascript" src="cordova.js"></script>
