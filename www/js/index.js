@@ -404,7 +404,11 @@ var isAllowedToAccessStudyAndAlertIfNot = function(isRevisit, day) {
         var timeLeft = 12 - nowAndThenDiffHours;
         var hours = parseInt(timeLeft);
         var minutes = Math.floor(timeLeft % parseInt(timeLeft) * 60);
+        if (isNaN(minutes) && hours === 0) {
+            return true;
+        }
         var message = 'You will be able to access the next questionnaire in ' + hours + ' hours ' + (minutes !== '00' ? ('and ' + minutes + ' minutes') : '');
+
         showMessage(message, null, 'Too soon', 'OK');
         return false;
     }
