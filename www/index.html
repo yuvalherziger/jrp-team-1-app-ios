@@ -24,6 +24,9 @@
         <a href="#index" class="close-panel">Home</a>
     </div>
     <div class="content-block">
+        <a href="#faq" class="close-panel">FAQ</a>
+    </div>
+    <div class="content-block">
         <a href="#raffle" class="close-panel">Info & Disclaimers</a>
     </div>
     <div class="content-block">
@@ -48,6 +51,11 @@
             <div data-page="raffle" class="navbar-inner cached">
                 <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
                 <div class="center sliding">Info & Disclaimers</div>
+            </div>
+            <!-- Navbar inner for About Us page-->
+            <div data-page="faq" class="navbar-inner cached">
+                <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+                <div class="center sliding">FAQ</div>
             </div>
             <!-- Navbar inner for About Us page-->
             <div data-page="about" class="navbar-inner cached">
@@ -109,13 +117,114 @@
                     <div class="content-block-title userMistake" style="display: none">Didn't complete <span class="userMistakeLastStudy"></span>?</div>
                     <div class="content-block userMistake" style="display: none">
                         <div class="row">
-                            <div class="col-100"><a class="button bg-lightblue button-fill" href="#" onclick="decrementStudyProgress();" id="revert">Mark <span class="userMistakeLastStudy"></span> incomplete</a></div>
+                            <div class="col-100"><a class="button bg-lightblue button-fill" href="#" onclick="verifyDecrementAction();" id="revert">Mark <span class="userMistakeLastStudy"></span> incomplete</a></div>
                         </div>
                     </div>
                     <div class="content-block-title">Got questions?</div>
                     <div class="content-block">
                         <div class="row">
                             <div class="col-100"><a class="button button-fill bg-blue external" data-rel="external" href="mailto:consumption.jrp@gmail.com">Contact us</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page navbar-fixed toolbar-fixed cached" data-page="faq">
+                <!-- Top Navbar-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="#" class="back link icon-only"><i class="icon icon-back"></i></a>
+                            FAQ
+                        </div>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="content-block-title">1. App</div>
+                    <div class="content-block inset">
+                        <div class="content-block">
+                            <p>
+                                Q: <b>The app isn't working, what should I do?</b>
+                            </p>
+                            <p>
+                                A: If you have <span style="font-style:italic; font-weight: bold">not</span> yet started doing the intervention, try uninstalling and reinstalling the app. Make sure to delete not only the app, but also the app’s cache memory through your system preferences. Please <span style="font-style: italic; font-weight: bold">do not uninstall the app if you have already started the intervention.</span> If the problem persists, or you have already completed part of the intervention, please contact us at <a data-rel="external" href="mailto:consumption.jrp@gmail.com">consumption.jrp@gmail.com</a>.
+                            </p>
+                            <p>
+                                Q: <b>My notifications aren't working, what should I do?</b>
+                            </p>
+                            <p>
+                                A: You should receive notifications from the app every day for one week (or until you finish the week-long intervention) at 17:00/5pm in your local time. If you have not received a notification from the app, check that the app’s notification setting is set to ‘on’ in your phone’s app settings: for <a data-rel="external" class="generalLink" href="#" data-link="http://www.androidcentral.com/how-control-notifications-specific-apps-galaxy-s7">Android</a> and <a data-rel="external" class="generalLink" href="#" data-link="http://www.imore.com/how-manage-notifications-iphone-and-ipad">Apple</a> devices.
+                            </p>
+                            <p>
+                                If the notifications are set to ‘on’, and you still do not receive notifications, try turning your phone’s mobile data off and then on again. If this doesn’t work, and you have not yet started doing the intervention, try uninstalling and reinstalling the app.
+                            </p>
+                            <p>
+                                Make sure to delete not only the app, but also the app’s cache memory through your system preferences. Please <i>do not uninstall the app if you have already started the intervention</i>. If the problem persists, please contact us at <a data-rel="external" href="mailto:consumption.jrp@gmail.com">consumption.jrp@gmail.com</a>.
+                            </p>
+                            <p>
+                                Q: <b>How do I turn the notifications off?</b>
+                            </p>
+                            <p>
+                                A: If you are still enrolled in the study, please do not turn off your notifications. These notifications are important in reminding you when to log-in to the app and complete the intervention.
+                            </p>
+                            <p>
+                                Notifications will automatically stop when you complete the intervention.
+                                If, for any reason, you would still like to turn the notifications off, you may do so through this linked guidance for <a class="generalLink" href="#" data-link="http://www.makeuseof.com/tag/stop-annoying-notifications-android/" data-rel="external">Android</a> and <a class="generalLink" href="#" data-link="https://turbofuture.com/computers/How-to-Turn-Off-Push-Notifications-on-iPads-and-iPhones" data-rel="external">Apple</a> devices.
+                            </p>
+                            <p>
+                                Q: <b>How do I remove the app from my phone?</b>
+                            </p>
+                            <p>
+                                A: You can remove the app just like any regular mobile app. Simply uninstall the app either through your system preferences or on your homescreen, with a long press on the app icon.
+                            </p>
+                            <p>
+                                Q: <b>I uninstalled the app, but then changed my mind and reinstalled it. Can I continue the study where I left off?</b>
+                            </p>
+                            <p>
+                                A: If you wish to continue the study after deleting and reinstalling the app, please contact us at <a href="mailto:consumption.jrp@gmail.com" data-rel="external">consumption.jrp@gmail.com</a>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">2. Data</div>
+                    <div class="content-block inset">
+                        <div class="content-block">
+                            <p>
+                                Q: <b>When will I be able to see my progress report?</b>
+                            </p>
+                            <p>
+                                A: You will receive a progress report after the 7 day intervention and upon completion of the study. The study will be considered complete after both the 7 day intervention and the 1 month follow-up.
+                            </p>
+                            <p>
+                                Q: <b>How can I see my data?</b>
+                            </p>
+                            <p>
+                                A: If you wish to access your data please contact us at <a href="mailto:consumption.jrp@gmail.com" data-rel="external">consumption.jrp@gmail.com</a>.
+                            </p>
+                            <p>
+                                Q: <b>Will others be able to access my data?</b>
+                            </p>
+                            <p>
+                                A: No, we use a reliable and secure web-service to store and encrypt the data you submit through the questionnaires. Only the research-team will be able to access the data. After the study, all personal information will be destroyed.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block-title">3. The study</div>
+                    <div class="content-block inset">
+                        <div class="content-block">
+                            <p>
+                                Q: <b>I forgot my login information and/or am having difficulties logging in to the survey, what should I do?</b>
+                            </p>
+                            <p>
+                                A: If you have forgotten your login information or are having difficulties logging in, please contact us at <a href="mailto:consumption.jrp@gmail.com" data-rel="external">consumption.jrp@gmail.com</a> so that we can assist you.
+                            </p>
+                            <p>
+                                Q: <b>I skipped a day, what should I do?</b>
+                            </p>
+                            <p>
+                                A: If you accidentally skipped a day of the intervention, please carry on from where you left off.
+                            </p>
+                            <p>
+                                For example, if you were unable to complete the “Day 5 questionnaires” on your 5th day of participation in the study, please complete them on your 6th day of participation. Carry on in the same way by completing the “Day 6 questionnaires” on the 7th day and the “Day 7 questionnaires” on your 8th day of participation.
+                            </p>
                         </div>
                     </div>
                 </div>

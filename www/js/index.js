@@ -12,7 +12,10 @@ document.addEventListener('deviceready', function () {
             window.open(devUrl, '_system');
         }
     });
-
+    $$(".generalLink").click(function() {
+        var linkUrl = $$(this).attr('data-link');
+        openGeneralInAppBrowserLink(linkUrl);
+    });
     $$("#teamLink").click(function() {
         var teamUrl = 'https://theconsumptionstudy.wixsite.com/info';
         try {
@@ -233,6 +236,16 @@ var scheduleNotification = function(notificationTime, day) {
     });
 };
 
+var verifyDecrementAction = function() {
+    var message = "Are you sure you'd like to mark this questionnaire incomplete?";
+    var confirmCallback = function(buttonIndex) {
+        if (buttonIndex === 2) {
+            decrementStudyProgress();
+        }
+    };
+    navigator.notification.confirm(message, confirmCallback, 'Mark Incomplete?', ['Cancel', 'OK']);
+};
+
 var decrementStudyProgress = function() {
     var participantProgress = getParticipantProgress();
     var lastStudy = participantProgress.lastStudy;
@@ -318,8 +331,6 @@ var appendStudyUrls = function(studyUrls) {
 };
 
 var getStudyUrls = function() {
-    $$("#loading").attr('style', 'display: block');
-    $$("#content").hide();
     var url = "https://s3-eu-west-1.amazonaws.com/jrp-team-1-consumption/study-paths";
     var data = {};
     $$.getJSON(
@@ -332,8 +343,6 @@ var getStudyUrls = function() {
             console.debug('got error', xhr, status);
             appendStudyUrls(studyUrls);
         });
-    $$("#loading").hide();
-    $$("#content").attr('style', 'display: block');
 };
 
 var permissionCheckCallback = function(exists) {
@@ -410,4 +419,12 @@ var showMessage = function(message, callback, title, buttonText) {
         title,
         buttonText
     );
+};
+
+var openGeneralInAppBrowserLink = function(url) {
+    try {
+        cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+    } catch (e) {
+        window.open(url, '_system');
+    }
 };
